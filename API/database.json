@@ -1,3 +1,40 @@
 {
-  "todos": []
+  "todos": [
+    {
+      "title": "Ajustar tela inicial de todos",
+      "completed": false,
+      "id": 1
+    },
+    {
+      "title": "Add bedge status",
+      "completed": true,
+      "id": 2
+    },
+    {
+      "title": "Tela de Login/Registro e esqueceu senha",
+      "completed": false,
+      "id": 3
+    },
+    {
+      "title": "Incapsular todos",
+      "completed": true,
+      "id": 6
+    },
+    {
+      "title": "Ajustar menu",
+      "completed": false,
+      "id": 7
+    },
+    {
+      "title": "Usar o SCSS para compactar components",
+      "completed": false,
+      "id": 8
+    }
+  ],
+  "users": {
+    "id": 1,
+    "name": "Rodrigo Spinelli",
+    "email": "rodrigo.spinelli9@gmail.com"
+  },
+  "darkmode": {}
 }

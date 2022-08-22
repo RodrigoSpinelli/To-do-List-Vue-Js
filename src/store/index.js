@@ -3,11 +3,19 @@ import axios from 'axios';
 
 export default createStore({
   state: {
-    todos: []
+    todos: [],
+    users: {},
+    darkmode: {}
   },
   mutations: {
+    storedarkMode(state, payload){
+      state.darkmode = payload
+    },
     storeTodos(state, payload) {
       state.todos = payload
+    },
+    storeUsers(state, payloads) {
+      state.users = payloads
     },
     storeTodo(state, payload) {
       const index = state.todos.findIndex(todo => todo.id === payload.id)
@@ -25,6 +33,19 @@ export default createStore({
     }
   },
   actions: {
+    getDarkMod({commit}){
+      return axios.get('http://localhost:3000/darkmode')
+      .then((response) => {
+        commit('storedarkMode', response.data)
+      })
+    },
+    getUsers({commit}){
+      return axios.get('http://localhost:3000/users')
+      .then((response) => {
+        commit('storeUsers', response.data)
+      })
+    },
+
     getTodos({ commit }) {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -43,11 +64,18 @@ export default createStore({
       })
     },
 
+    updateDarkMode({commit}, data){
+      return axios.put('http://localhost:3000/darkmode', data).then((response) => {
+        commit('storedarkMode', response.data)
+      })
+    },
+
     updateTodo({commit}, { id, data }) {
       return axios.put(`http://localhost:3000/todos/${id}`, data).then((response) => {
         commit('storeTodo', response.data);
       })
     },
+
     deleteTodo({commit}, id) {
       return axios.delete(`http://localhost:3000/todos/${id}`).then(() => {
         commit('deleteTodo', id);
